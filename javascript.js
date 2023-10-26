@@ -1,6 +1,6 @@
 let squareNo; 
 let btn = document.querySelector("#new-grid");
-let div = document.querySelector(".container");
+let div = document.querySelector(".main");
 let body = document.querySelector("body");
 const createBtn = document.createElement("button");
 const para = document.createElement("p");
@@ -42,12 +42,17 @@ function createVert(num) {
     return pixelCont;
 };
 
+let horiPixelCont;
 function createHori(num) {
-    let horiPixel
+    div.removeChild(div.lastElementChild);
+    let horiPixel;
+    horiPixelCont = document.createElement("div");
+    horiPixelCont.setAttribute("class","container");
     for (let i = 0; i < num; i++) {
         horiPixel = document.createElement("div");
-        div.appendChild(horiPixel);
+        horiPixelCont.appendChild(horiPixel);
         horiPixel.appendChild(createVert(num));
+        div.appendChild(horiPixelCont);
     }
-}
+};
 
