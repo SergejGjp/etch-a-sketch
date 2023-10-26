@@ -42,11 +42,10 @@ function createVert(num) {
     return pixelCont;
 };
 
-let horiPixelCont;
 function createHori(num) {
     div.removeChild(div.lastElementChild);
     let horiPixel;
-    horiPixelCont = document.createElement("div");
+    let horiPixelCont = document.createElement("div");
     horiPixelCont.setAttribute("class","container");
     for (let i = 0; i < num; i++) {
         horiPixel = document.createElement("div");
@@ -56,3 +55,4 @@ function createHori(num) {
     }
 };
 
+createBtn.addEventListener("click", () => createHori(squareNo));
