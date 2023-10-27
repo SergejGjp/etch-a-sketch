@@ -30,14 +30,16 @@ function getSquares() {
 
 btn.addEventListener("click", getSquares);
 
+let pixel = document.createElement("div");
 function createVert(num) {
-    let pixel;
+    ;
     let pixelCont = document.createElement("div");
     div.appendChild(pixelCont);
     for (let i = 0; i< num; i++) {
         pixel = document.createElement("div");
         pixel.setAttribute("class", "pixel");
         pixelCont.appendChild(pixel);
+        
     };
     return pixelCont;
 };
@@ -52,7 +54,13 @@ function createHori(num) {
         horiPixelCont.appendChild(horiPixel);
         horiPixel.appendChild(createVert(num));
         div.appendChild(horiPixelCont);
-    }
+    };
+    let elements = document.getElementsByClassName("pixel");
+    for (i = 0; i < elements.length; i++) {
+        elements[i].addEventListener("mouseover", makeBlack);
+    };
 };
 
 createBtn.addEventListener("click", () => createHori(squareNo));
+
+function makeBlack() { this.classList.add("class", "mouse-over")};
