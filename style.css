@@ -4,13 +4,10 @@
     border: 1px solid black;
 }
 
-.container {
+#container {
     display: flex;
-    flex-direction: row;
-    width: 10rem;
-    height: 10rem;
 }
 
-.mouse-over {
+.clicked {
     background-color: black;
 }
