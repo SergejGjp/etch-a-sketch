@@ -19,11 +19,25 @@ createGrid();
 
 function makeBlack() {
     this.classList.add("clicked");
+};
+
+function makeRGB() {
+    color1 = Math.floor(Math.random()*255);
+    color2 = Math.floor(Math.random()*255);
+    color3 = Math.floor(Math.random()*255);
+    console.log(color1, color2, color3);
+    this.style.cssText = `background-color : rgb(${color1}, ${color2}, ${color3})`
 }
 
-function removeListener(array) {
+function addListener(array, func) {
     for (let i = 0; i < array.length; i++) {
-        array[i].removeEventListener("mouseover", makeBlack);
+        array[i].addEventListener("mouseover", func);
+    };
+};
+
+function removeListener(array, func) {
+    for (let i = 0; i < array.length; i++) {
+        array[i].removeEventListener("mouseover", func);
     };
 };
 
@@ -54,8 +68,13 @@ btn.addEventListener("click", getSquares);
 
 let rgbBtn = document.querySelector("#rgb");
 
+
+let color1;
+let color2;
+let color3;
 function toRgbPointer() {
-    removeListener(pixels);
+    removeListener(pixels, makeBlack);
+    addListener(pixels, makeRGB);
 };
 
 rgbBtn.addEventListener("click", toRgbPointer);
