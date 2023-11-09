@@ -21,12 +21,24 @@ function makeBlack() {
     this.classList.add("clicked");
 };
 
+let color1 = 0;
+let color2;
+let color3;
 function makeRGB() {
     color1 = Math.floor(Math.random()*255);
     color2 = Math.floor(Math.random()*255);
     color3 = Math.floor(Math.random()*255);
-    console.log(color1, color2, color3);
+    //console.log(color1, color2, color3);
     this.style.cssText = `background-color : rgb(${color1}, ${color2}, ${color3})`
+};
+
+function makeGrad() {
+    this.style.cssText = `background-color : hsl(0, 0%, ${color1}%)`;
+    while (color1 < 100) {
+        color1 += 10;
+        break;
+    };
+    //console.log(color1);
 }
 
 function addListener(array, func) {
@@ -68,13 +80,24 @@ btn.addEventListener("click", getSquares);
 
 let rgbBtn = document.querySelector("#rgb");
 
-
-let color1;
-let color2;
-let color3;
 function toRgbPointer() {
+    color1 = 0;
+    color2 = 0;
+    color3 = 0;
     removeListener(pixels, makeBlack);
+    removeListener(pixels, makeGrad);
     addListener(pixels, makeRGB);
 };
 
 rgbBtn.addEventListener("click", toRgbPointer);
+
+let gradBtn = document.querySelector("#gradient");
+
+function toGradPointer() {
+    color1 = 0;
+    removeListener(pixels, makeBlack);
+    removeListener(pixels, makeRGB);
+    addListener(pixels, makeGrad);
+}
+
+gradBtn.addEventListener("click", toGradPointer);
